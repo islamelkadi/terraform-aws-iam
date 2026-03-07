@@ -15,6 +15,24 @@ Production-ready AWS IAM Policy module for creating and attaching custom IAM pol
 - **Path Organization**: Support for IAM path hierarchy
 - **Consistent Naming**: Integration with metadata module for standardized resource naming
 
+
+
+## Security
+
+### Environment-Based Security Controls
+
+Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) module's security profiles:
+
+| Control | Dev | Staging | Prod |
+|---------|-----|---------|------|
+| Least privilege | Enforced | Enforced | Enforced |
+| No wildcard resources | Recommended | Required | Required |
+| Policy scope restrictions | Recommended | Required | Required |
+
+For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
+## Security
+
+#
 ## Usage Example
 
 ```hcl
@@ -53,17 +71,6 @@ module "s3_read_policy" {
 }
 ```
 
-## Environment-Based Security Controls
-
-Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
-
-| Control | Dev | Staging | Prod |
-|---------|-----|---------|------|
-| Least privilege | Enforced | Enforced | Enforced |
-| No wildcard resources | Recommended | Required | Required |
-| Policy scope restrictions | Recommended | Required | Required |
-
-For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
 
 <!-- BEGIN_TF_DOCS -->
 
@@ -188,10 +195,4 @@ module "corporate_actions_policy" {
 ## Example
 
 See [example/](example/) for a complete working example with all features.
-
-## License
-
-MIT Licensed. See [LICENSE](LICENSE) for full details.
-<!-- END_TF_DOCS -->
-
 
