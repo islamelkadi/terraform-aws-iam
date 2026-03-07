@@ -17,37 +17,10 @@ make bootstrap
 
 This will install/upgrade: tfenv, Terraform (via tfenv), tflint, terraform-docs, checkov, and pre-commit.
 
-## Submodules
 
-| Submodule | Description |
-|-----------|-------------|
-| [role](modules/role/) | IAM roles with assume role policies, managed and inline policies |
-| [policy](modules/policy/) | Standalone IAM policies with optional attachments |
+## Security
 
-## Usage
-
-```hcl
-module "lambda_role" {
-  source = "path/to/terraform-aws-iam/modules/role"
-
-  namespace   = "example"
-  environment = "prod"
-  name        = "lambda-execution"
-  region      = "us-east-1"
-
-  description           = "Lambda execution role"
-  principal_type        = "Service"
-  principal_identifiers = ["lambda.amazonaws.com"]
-
-  managed_policy_arns = [
-    "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
-  ]
-
-  tags = var.tags
-}
-```
-
-## Security Controls
+### Security Controls
 
 Implements controls for FSBP, CIS, NIST 800-53/171, and PCI DSS v4.0:
 
@@ -56,6 +29,26 @@ Implements controls for FSBP, CIS, NIST 800-53/171, and PCI DSS v4.0:
 - Service roles with proper assume role policies
 - Path-based organization
 - Security control overrides with audit justification
+
+### Environment-Based Security Controls
+
+Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
+
+| Control | Dev | Staging | Prod |
+|---------|-----|---------|------|
+| Least privilege | Enforced | Enforced | Enforced |
+| No wildcard resources | Recommended | Required | Required |
+| Service roles | Required | Required | Required |
+| MFA for human access | Optional | Required | Required |
+
+For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
+## Submodules
+
+| Submodule | Description |
+|-----------|-------------|
+| [role](modules/role/) | IAM roles with assume role policies, managed and inline policies |
+| [policy](modules/policy/) | Standalone IAM policies with optional attachments |
+
 
 ## Module Structure
 
@@ -81,18 +74,6 @@ terraform-aws-iam/
 | terraform | >= 1.14.3 |
 | aws | >= 6.34 |
 
-## Environment-Based Security Controls
-
-Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
-
-| Control | Dev | Staging | Prod |
-|---------|-----|---------|------|
-| Least privilege | Enforced | Enforced | Enforced |
-| No wildcard resources | Recommended | Required | Required |
-| Service roles | Required | Required | Required |
-| MFA for human access | Optional | Required | Required |
-
-For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
 
 ## MCP Servers
 
