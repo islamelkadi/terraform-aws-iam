@@ -303,7 +303,7 @@ module "lambda_role" {
 # Basic IAM Role Example
 
 module "lambda_role" {
-  source = "../"
+  source = "github.com/islamelkadi/terraform-aws-iam//modules/role"
 
   namespace   = var.namespace
   environment = var.environment

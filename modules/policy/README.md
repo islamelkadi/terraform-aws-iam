@@ -75,7 +75,7 @@ module "s3_read_policy" {
 # Basic IAM Policy Example
 
 module "corporate_actions_policy" {
-  source = "../"
+  source = "github.com/islamelkadi/terraform-aws-iam//modules/policy"
 
   namespace   = var.namespace
   environment = var.environment
