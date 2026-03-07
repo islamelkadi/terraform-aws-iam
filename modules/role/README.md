@@ -4,13 +4,25 @@ Production-ready AWS IAM Role module with comprehensive security controls, polic
 
 ## Table of Contents
 
-- [Security Controls](#security-controls)
+- [Security](#security)
 - [Features](#features)
 - [Usage Examples](#usage-examples)
 - [Requirements](#requirements)
 - [Examples](#examples)
 
-## Security Controls
+## Features
+
+- **Flexible Policy Attachment**: Support for managed, inline, and custom policies
+- **Permissions Boundary**: Optional permissions boundary for delegated administration
+- **Session Duration Control**: Configurable maximum session duration (1-12 hours)
+- **Force Detach**: Optional force detachment of policies before deletion
+- **Custom Path**: Support for IAM path organization
+- **Consistent Naming**: Integration with metadata module for standardized resource naming
+- **Security Validations**: Least privilege and wildcard resource checks
+
+## Security
+
+### Security Controls
 
 This module implements security controls based on the metadata module's security policy. Controls can be selectively overridden with documented business justification.
 
@@ -43,16 +55,18 @@ security_control_overrides = {
 4. **Audit Trail**: All overrides require `justification` field for compliance
 5. **Review Cycle**: Quarterly review of all IAM roles and policies
 
-## Features
+### Environment-Based Security Controls
 
-- **Flexible Policy Attachment**: Support for managed, inline, and custom policies
-- **Permissions Boundary**: Optional permissions boundary for delegated administration
-- **Session Duration Control**: Configurable maximum session duration (1-12 hours)
-- **Force Detach**: Optional force detachment of policies before deletion
-- **Custom Path**: Support for IAM path organization
-- **Consistent Naming**: Integration with metadata module for standardized resource naming
-- **Security Validations**: Least privilege and wildcard resource checks
+Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) module's security profiles:
 
+| Control | Dev | Staging | Prod |
+|---------|-----|---------|------|
+| Least privilege | Enforced | Enforced | Enforced |
+| No wildcard resources | Recommended | Required | Required |
+| Service roles | Required | Required | Required |
+| Session duration limits | Relaxed | Standard | Strict |
+
+For full details on security profiles and how controls vary by environment, see the [Security Profiles](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) documentation.
 ## Usage Examples
 
 ### Example 1: Basic Lambda Execution Role (Simplified)
@@ -281,21 +295,7 @@ module "lambda_role" {
 }
 ```
 
-## Environment-Based Security Controls
-
-Security controls are automatically applied based on the environment through the [terraform-aws-metadata](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles){:target="_blank"} module's security profiles:
-
-| Control | Dev | Staging | Prod |
-|---------|-----|---------|------|
-| Least privilege | Enforced | Enforced | Enforced |
-| No wildcard resources | Recommended | Required | Required |
-| Service roles | Required | Required | Required |
-| Session duration limits | Relaxed | Standard | Strict |
-
-For full details on security profiles and how controls vary by environment, see the <a href="https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles" target="_blank">Security Profiles</a> documentation.
-
 <!-- BEGIN_TF_DOCS -->
-
 
 ## Usage
 
@@ -406,15 +406,6 @@ module "lambda_role" {
 | <a name="output_role_name"></a> [role\_name](#output\_role\_name) | Name of the IAM role |
 | <a name="output_role_unique_id"></a> [role\_unique\_id](#output\_role\_unique\_id) | Unique ID of the IAM role |
 | <a name="output_tags"></a> [tags](#output\_tags) | Tags applied to the IAM role |
-
-## Example
-
-See [example/](example/) for a complete working example with all features.
-
-## License
-
-MIT Licensed. See [LICENSE](LICENSE) for full details.
-<!-- END_TF_DOCS -->
 
 ## Examples
 
