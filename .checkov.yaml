@@ -5,3 +5,7 @@ skip-check:
   # IAM Policy Attachment to Users - Example demonstrates user policy attachment
   - id: CKV_AWS_40
     comment: "Example demonstrates IAM user policy attachment. In production, users should attach policies to groups or roles instead."
+  
+  # Terraform Module Sources - Using semantic versioning tags (commit hash)
+  - id: CKV_TF_1
+    comment: "Using semantic version tags (?ref=v1.0.0) instead of commit hashes for better maintainability and readability."
