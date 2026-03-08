@@ -1,5 +1,9 @@
 # Terraform AWS IAM Module
 
+[![Terraform Security](https://github.com/islamelkadi/terraform-aws-iam/actions/workflows/terraform-security.yaml/badge.svg)](https://github.com/islamelkadi/terraform-aws-iam/actions/workflows/terraform-security.yaml)
+[![Terraform Lint & Validation](https://github.com/islamelkadi/terraform-aws-iam/actions/workflows/terraform-lint.yaml/badge.svg)](https://github.com/islamelkadi/terraform-aws-iam/actions/workflows/terraform-lint.yaml)
+[![Terraform Docs](https://github.com/islamelkadi/terraform-aws-iam/actions/workflows/terraform-docs.yaml/badge.svg)](https://github.com/islamelkadi/terraform-aws-iam/actions/workflows/terraform-docs.yaml)
+
 Reusable Terraform module for AWS IAM roles and policies.
 
 ## Prerequisites
