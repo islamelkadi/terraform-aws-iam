@@ -411,3 +411,4 @@ module "lambda_role" {
 
 See [example/](example/) for a complete working example.
 
+<!-- END_TF_DOCS -->
