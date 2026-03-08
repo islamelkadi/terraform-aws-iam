@@ -1,12 +1,10 @@
 # Checkov configuration for terraform-aws-iam
 # Suppressions for checks that are not applicable to example/demo code
 
-
 skip-check:
   # IAM Policy Attachment to Users - Example demonstrates user policy attachment
-  - id: CKV_AWS_40
-    comment: "Example demonstrates IAM user policy attachment. In production, users should attach policies to groups or roles instead."
+  - CKV_AWS_40  # Example demonstrates IAM user policy attachment
   
-  # Terraform Module Sources - Using semantic versioning tags (commit hash)
-  - id: CKV_TF_1
-    comment: "Using semantic version tags (?ref=v1.0.0) instead of commit hashes for better maintainability and readability."
+  # Terraform Module Sources - Using semantic versioning tags
+  - CKV_TF_1  # Using semantic version tags (?ref=v1.0.0) instead of commit hashes
+  - CKV_TF_2  # Using semantic version tags (?ref=v1.0.0) which is a valid versioning strategy
