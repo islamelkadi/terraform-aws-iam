@@ -1,3 +1,13 @@
+## [1.0.2](https://github.com/islamelkadi/terraform-aws-iam/compare/v1.0.1...v1.0.2) (2026-03-08)
+
+
+### Documentation
+
+* add GitHub Actions workflow status badges ([03fbf34](https://github.com/islamelkadi/terraform-aws-iam/commit/03fbf349d4f4913db1ea924ac2564e9aa9ced591))
+* add security scan suppressions section to README ([654e1b7](https://github.com/islamelkadi/terraform-aws-iam/commit/654e1b7c19be3373b878d1d1f2c0481e23fe3437))
+* added missing TF docs closing tags ([c23e7d4](https://github.com/islamelkadi/terraform-aws-iam/commit/c23e7d4ba71de82dcf381231f45854bf8b29b15b))
+* added missing TF docs closing tags ([129dc7e](https://github.com/islamelkadi/terraform-aws-iam/commit/129dc7e11a143d08be604f42b4df0fb1b455b644))
+
 ## [1.0.1](https://github.com/islamelkadi/terraform-aws-iam/compare/v1.0.0...v1.0.1) (2026-03-08)
 
 
