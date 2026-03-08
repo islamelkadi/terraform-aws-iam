@@ -1,6 +1,10 @@
 # Checkov configuration for terraform-aws-iam
 # Suppressions for checks that are not applicable to example/demo code
 
+# Skip scanning external modules directory
+skip-path:
+  - .external_modules/**
+
 skip-check:
   # IAM Policy Attachment to Users - Example demonstrates user policy attachment
   - id: CKV_AWS_40
