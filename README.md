@@ -41,6 +41,19 @@ Security controls are automatically applied based on the environment through the
 | MFA for human access | Optional | Required | Required |
 
 For full details on security profiles and how controls vary by environment, see the [Security Profiles](https://github.com/islamelkadi/terraform-aws-metadata?tab=readme-ov-file#security-profiles) documentation.
+
+### Security Scan Suppressions
+
+This module suppresses certain Checkov security checks that are not applicable to example/demo code. The following checks are suppressed in `.checkov.yaml`:
+
+**Module Source Versioning (CKV_TF_1, CKV_TF_2)**
+- Suppressed because we use semantic version tags (`?ref=v1.0.0`) instead of commit hashes for better maintainability and readability
+- Semantic versioning is a valid and widely-accepted versioning strategy for stable releases
+
+**IAM Policy Attachment (CKV_AWS_40)**
+- Suppressed because example code demonstrates IAM user policy attachment for educational purposes
+- In production, users should attach policies to groups or roles instead of directly to users
+
 ## Submodules
 
 | Submodule | Description |
