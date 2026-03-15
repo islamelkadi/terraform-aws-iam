@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/islamelkadi/terraform-aws-iam/compare/v1.0.2...v1.1.0) (2026-03-15)
+
+
+### Features
+
+* add manual triggering to release workflow ([91a9484](https://github.com/islamelkadi/terraform-aws-iam/commit/91a9484db6f6b4c77fd71421246557e284f3a55d))
+
 ## [1.0.2](https://github.com/islamelkadi/terraform-aws-iam/compare/v1.0.1...v1.0.2) (2026-03-08)
 
 
